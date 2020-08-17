@@ -72,7 +72,7 @@ position = Vector2( 1069.32, 170.625 )
 position = Vector2( 918.644, 543.725 )
 
 [node name="spawn_musuh" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

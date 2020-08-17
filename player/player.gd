@@ -4,6 +4,7 @@ export (int) var jumlah_peluru
 export (PackedScene) var peluru 
 export (int ) var speed 
 
+onready var animasi = $AnimationPlayer
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
@@ -34,6 +35,8 @@ func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("tembak") and tembak and jumlah_peluru != 0:
+		animasi.play("tembak")
+		animasi.play("camerashake")
 		Global.bullet = jumlah_peluru - 1
 		emit_signal("nembak")
 		shoot()
