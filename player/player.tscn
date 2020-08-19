@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/pistol.png" type="Texture" id=4]
 [ext_resource path="res://bullet/bullet.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "camerashake"
 length = 0.3
 tracks/0/type = "value"
@@ -22,15 +22,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 12 ), Vector2( 0, -12 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "tembak"
+[sub_resource type="Animation" id=2]
 length = 0.3
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
 script = ExtResource( 2 )
-jumlah_peluru = 5
+jumlah_peluru = 3
 peluru = ExtResource( 5 )
 speed = 300
 
@@ -68,6 +67,6 @@ position = Vector2( 64, -5 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/camerashake = SubResource( 2 )
-anims/tembak = SubResource( 1 )
+anims/camerashake = SubResource( 1 )
+anims/tembak = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

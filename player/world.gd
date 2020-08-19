@@ -5,7 +5,7 @@ var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
 
 func _ready():
-	b = 5
+	b = 3
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 	musuh
 	randomize()

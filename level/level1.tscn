@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://map/map.tres" type="TileSet" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://level/level1.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
+
+[node name="level1" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -505.0
+margin_top = -315.0
+margin_right = 1474.0
+margin_bottom = 758.0
+color = Color( 0.215686, 0.00784314, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 39, 39 )
+format = 1
+tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -196593, 0, 0, -196592, 0, 0, -196591, 0, 0, -196590, 0, 0, -196589, 0, 0, -196588, 0, 0, -196587, 0, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -196583, 0, 0, -196582, 0, 0, -196581, 0, 0, -196580, 0, 0, -196579, 0, 0, -65540, 0, 0, -131043, 0, 0, -4, 0, 0, -65507, 0, 0, 65532, 0, 0, 29, 0, 0, 131068, 0, 0, 65565, 0, 0, 196604, 0, 0, 131101, 0, 0, 262140, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196637, 0, 0, 327676, 0, 0, 262152, 0, 0, 262161, 0, 0, 262173, 0, 0, 393212, 0, 0, 327688, 0, 0, 327697, 0, 0, 327709, 0, 0, 458748, 0, 0, 393224, 0, 0, 393233, 0, 0, 393245, 0, 0, 524284, 0, 0, 458760, 0, 0, 458769, 0, 0, 458781, 0, 0, 589820, 0, 0, 524296, 0, 0, 524305, 0, 0, 524317, 0, 0, 655356, 0, 0, 589832, 0, 0, 589841, 0, 0, 589853, 0, 0, 720892, 0, 0, 655368, 0, 0, 655377, 0, 0, 655389, 0, 0, 786428, 0, 0, 720904, 0, 0, 720913, 0, 0, 720925, 0, 0, 851964, 0, 0, 786461, 0, 0, 917500, 0, 0, 851997, 0, 0, 983036, 0, 0, 917533, 0, 0, 1048572, 0, 0, 1048573, 0, 0, 1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0 )
+
+[node name="portal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 856, 264 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[node name="enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 840, 0 )
+
+[node name="enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 808, 305 )
+
+[node name="enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 230, 465 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Heart_Bar" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = 33.0
+margin_top = 27.0
+margin_right = 73.0
+margin_bottom = 67.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 226.0
+margin_top = 17.0
+margin_right = 330.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 1 )
+text = "Bullet: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
+[connection signal="nembak" from="player" to="." method="_on_player_nembak"]
