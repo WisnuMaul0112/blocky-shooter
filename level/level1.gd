@@ -11,3 +11,5 @@ func _on_player_nembak():
 	Bullet.text = "Bullet: " + str(Global.bullet)
 	
 
+func _on_portal_level_1():
+	pass # Replace with function body.

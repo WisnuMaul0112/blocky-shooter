@@ -8,14 +8,12 @@ func _ready():
 	b = 3
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 	musuh
-	randomize()
-	$"way out"
 
 func spawn():
 	for i in range(jumlah_spawn):
 		var musuh_muncul = musuh.instance()
-		musuh_muncul.position.x = rand_range(2424.111, 2424.111)
-		musuh_muncul.position.y = rand_range(2207.426, 1214.096)
+		musuh_muncul.position.x = rand_range(1638.913, -13.829)
+		musuh_muncul.position.y = rand_range(109.272, 616.31)
 		add_child(musuh_muncul)
 
 func _on_spawn_musuh_timeout():
@@ -31,3 +29,4 @@ func _on_TambahPeluru_isi_peluru():
 
 func _on_portal_world():
 	pass 
+

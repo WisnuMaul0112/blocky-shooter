@@ -93,12 +93,12 @@ text = "Bullet: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru3" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru3" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru3" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
 [connection signal="timeout" from="spawn_musuh" to="." method="_on_spawn_musuh_timeout"]
