@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://map/map.tres" type="TileSet" id=1]
+[ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://level/level3.gd" type="Script" id=5]
+[ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/TambahPeluru.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/portal.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[node name="level3" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -695.0
+margin_top = -421.0
+margin_right = 2390.0
+margin_bottom = 1190.0
+color = Color( 0.215686, 0.00784314, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 39, 39 )
+format = 1
+tile_data = PoolIntArray( -131082, 0, 0, -131081, 0, 0, -131080, 0, 0, -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -196593, 0, 0, -196592, 0, 0, -196591, 0, 0, -196590, 0, 0, -196589, 0, 0, -196588, 0, 0, -196587, 0, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -196583, 0, 0, -196582, 0, 0, -196581, 0, 0, -196580, 0, 0, -196579, 0, 0, -196578, 0, 0, -196577, 0, 0, -196576, 0, 0, -196575, 0, 0, -196574, 0, 0, -196573, 0, 0, -196572, 0, 0, -196571, 0, 0, -196570, 0, 0, -196569, 0, 0, -196568, 0, 0, -196567, 0, 0, -196566, 0, 0, -196565, 0, 0, -65546, 0, 0, -131064, 0, 0, -131045, 0, 0, -131029, 0, 0, -10, 0, 0, -65528, 0, 0, -65509, 0, 0, -65493, 0, 0, 65526, 0, 0, 8, 0, 0, 27, 0, 0, 43, 0, 0, 131062, 0, 0, 131069, 0, 0, 65538, 0, 0, 65544, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65563, 0, 0, 65569, 0, 0, 65570, 0, 0, 65571, 0, 0, 65572, 0, 0, 65573, 0, 0, 65574, 0, 0, 65575, 0, 0, 65579, 0, 0, 196598, 0, 0, 196605, 0, 0, 131074, 0, 0, 131080, 0, 0, 131094, 0, 0, 131099, 0, 0, 131105, 0, 0, 131115, 0, 0, 262134, 0, 0, 262141, 0, 0, 196610, 0, 0, 196616, 0, 0, 196630, 0, 0, 196635, 0, 0, 196641, 0, 0, 196651, 0, 0, 327670, 0, 0, 327677, 0, 0, 262146, 0, 0, 262152, 0, 0, 262166, 0, 0, 262171, 0, 0, 262177, 0, 0, 262187, 0, 0, 393206, 0, 0, 393213, 0, 0, 327682, 0, 0, 327688, 0, 0, 327702, 0, 0, 327707, 0, 0, 327713, 0, 0, 327720, 0, 0, 327723, 0, 0, 458742, 0, 0, 458749, 0, 0, 393218, 0, 0, 393224, 0, 0, 393238, 0, 0, 393243, 0, 0, 393249, 0, 0, 393256, 0, 0, 393259, 0, 0, 524278, 0, 0, 524285, 0, 0, 458754, 0, 0, 458760, 0, 0, 458774, 0, 0, 458779, 0, 0, 458785, 0, 0, 458792, 0, 0, 458795, 0, 0, 589814, 0, 0, 589821, 0, 0, 524290, 0, 0, 524296, 0, 0, 524310, 0, 0, 524328, 0, 0, 524331, 0, 0, 655350, 0, 0, 589864, 0, 0, 589867, 0, 0, 720886, 0, 0, 655400, 0, 0, 655403, 0, 0, 786422, 0, 0, 720931, 0, 0, 720932, 0, 0, 720933, 0, 0, 720934, 0, 0, 720935, 0, 0, 720936, 0, 0, 720939, 0, 0, 851958, 0, 0, 851963, 0, 0, 851964, 0, 0, 851965, 0, 0, 851966, 0, 0, 851967, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786461, 0, 0, 786475, 0, 0, 917494, 0, 0, 851997, 0, 0, 852011, 0, 0, 983030, 0, 0, 917533, 0, 0, 917547, 0, 0, 1048566, 0, 0, 983069, 0, 0, 983083, 0, 0, 1114102, 0, 0, 1114107, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1048610, 0, 0, 1048611, 0, 0, 1048612, 0, 0, 1048613, 0, 0, 1048614, 0, 0, 1048615, 0, 0, 1048616, 0, 0, 1048617, 0, 0, 1048618, 0, 0, 1048619, 0, 0, 1179638, 0, 0, 1179643, 0, 0, 1114113, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114141, 0, 0, 1114146, 0, 0, 1114155, 0, 0, 1245174, 0, 0, 1245179, 0, 0, 1179649, 0, 0, 1179668, 0, 0, 1179677, 0, 0, 1179682, 0, 0, 1179691, 0, 0, 1310710, 0, 0, 1310715, 0, 0, 1245185, 0, 0, 1245204, 0, 0, 1245213, 0, 0, 1245227, 0, 0, 1376246, 0, 0, 1376251, 0, 0, 1310721, 0, 0, 1310740, 0, 0, 1310749, 0, 0, 1310763, 0, 0, 1441782, 0, 0, 1441787, 0, 0, 1376257, 0, 0, 1376276, 0, 0, 1376285, 0, 0, 1376299, 0, 0, 1507318, 0, 0, 1507319, 0, 0, 1507320, 0, 0, 1507321, 0, 0, 1507322, 0, 0, 1507323, 0, 0, 1507324, 0, 0, 1507325, 0, 0, 1507326, 0, 0, 1507327, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1441794, 0, 0, 1441795, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441798, 0, 0, 1441799, 0, 0, 1441800, 0, 0, 1441801, 0, 0, 1441802, 0, 0, 1441803, 0, 0, 1441804, 0, 0, 1441805, 0, 0, 1441806, 0, 0, 1441807, 0, 0, 1441808, 0, 0, 1441809, 0, 0, 1441810, 0, 0, 1441811, 0, 0, 1441812, 0, 0, 1441813, 0, 0, 1441814, 0, 0, 1441815, 0, 0, 1441816, 0, 0, 1441817, 0, 0, 1441818, 0, 0, 1441819, 0, 0, 1441820, 0, 0, 1441821, 0, 0, 1441822, 0, 0, 1441823, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441826, 0, 0, 1441827, 0, 0, 1441828, 0, 0, 1441829, 0, 0, 1441830, 0, 0, 1441831, 0, 0, 1441832, 0, 0, 1441833, 0, 0, 1441834, 0, 0, 1441835, 0, 0 )
+
+[node name="TambahPeluru" parent="." instance=ExtResource( 7 )]
+position = Vector2( 976, 80 )
+
+[node name="TambahPeluru2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 530.297, 782.192 )
+
+[node name="portal" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1602.21, 761.058 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -232, 104 )
+
+[node name="enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, 0 )
+
+[node name="enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1451, 150.882 )
+
+[node name="enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 336, 768 )
+
+[node name="spawn_musuh" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Heart_Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
+margin_left = 33.0
+margin_top = 27.0
+margin_right = 73.0
+margin_bottom = 67.0
+
+[node name="bullet" type="Label" parent="CanvasLayer"]
+margin_left = 226.0
+margin_top = 17.0
+margin_right = 330.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 1 )
+text = "Bullet:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
+[connection signal="nembak" from="player" to="." method="_on_player_nembak"]
+[connection signal="timeout" from="spawn_musuh" to="." method="_on_spawn_musuh_timeout"]
