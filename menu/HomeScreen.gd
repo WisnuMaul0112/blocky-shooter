@@ -3,7 +3,7 @@ var level
 var tutorial
 
 # contoh
-var level_1 = "res://level/level1.tscn"
+var play = "res://menu/level.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,4 +15,4 @@ func _ready():
 
 
 func play():
-	get_tree().change_scene(level_1)
+	get_tree().change_scene(play)
