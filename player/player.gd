@@ -21,6 +21,16 @@ func _process(delta):
 func _physics_process(delta):
 	var gerak = Vector2()
 	
+	var Analog = $CanvasLayer/Analog
+	
+	#on analog schene weare add formula 90-rad2deg(TouchPos.angle_to_point(position))
+	# then if we are want to give them back to Radian just add this formual Radian = (Angle - 90)*-1
+	 
+	gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
+	
+	rotation = deg2rad(-Analog.Angle)
+	
+	
 	if Input.is_action_pressed("atas"):
 		gerak.y -= 1
 	if Input.is_action_pressed("bawah"):
@@ -31,7 +41,7 @@ func _physics_process(delta):
 		gerak.x += 1
 		
 	gerak = gerak.normalized()
-	gerak = move_and_slide(gerak*speed)
+	gerak = move_and_collide(gerak*speed)
 	look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("tembak") and tembak and jumlah_peluru != 0:
@@ -45,7 +55,8 @@ func _physics_process(delta):
 func shoot():
 	var b = peluru.instance()
 	b.transform = $muzzle.global_transform
-	owner.add_child(b)
+	get_tree().get_root().call_deferred("add_child", b)
+	#owner.add_child(b)
 
 #func tembak():
 #	jumlah_peluru= bullet.instance()

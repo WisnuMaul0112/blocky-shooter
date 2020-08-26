@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://map/map.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=6]
@@ -35,15 +34,7 @@ tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 
 position = Vector2( 856, 264 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-
-[node name="enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 840, 0 )
-
-[node name="enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 808, 305 )
-
-[node name="enemy3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 230, 465 )
+speed = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
