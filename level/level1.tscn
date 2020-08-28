@@ -34,7 +34,6 @@ tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 
 position = Vector2( 856, 264 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-jumlah_peluru = 3
 speed = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -22,16 +22,20 @@ func _process(delta):
 	
 func _physics_process(delta):
 	var gerak = Vector2()
-	
+	var player_tembak = Vector2()
 	var Analog = $CanvasLayer/Analog
+	var AnalogTembak = $CanvasLayer/AnalogTembak
 	
 	#on analog schene weare add formula 90-rad2deg(TouchPos.angle_to_point(position))
 	# then if we are want to give them back to Radian just add this formual Radian = (Angle - 90)*-1
-	 
-	gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
 	
+	#analog gerak
+	gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
 	rotation = deg2rad(-Analog.Angle)
 	
+	#analog tembak
+	player_tembak = Vector2(cos(-deg2rad(AnalogTembak.Angle-90)),sin(-deg2rad(AnalogTembak.Angle-90)))*AnalogTembak.Strength*0
+	rotation = deg2rad(-AnalogTembak.Angle)
 	
 	if Input.is_action_pressed("atas"):
 		gerak.y -= 1
@@ -44,9 +48,9 @@ func _physics_process(delta):
 		
 	gerak = gerak.normalized()
 	gerak = move_and_collide(gerak*speed)
-	look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
 	
-	if Analog.IsTouched and tembak and jumlah_peluru != 0 and cooldown.is_stopped():
+	if AnalogTembak.IsTouched and tembak and jumlah_peluru != 0 and cooldown.is_stopped():
 		cooldown.start(jeda_tembak)
 		animasi.play("tembak")
 		animasi.play("camerashake")
