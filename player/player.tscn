@@ -30,7 +30,7 @@ length = 0.3
 "player",
 ]]
 script = ExtResource( 2 )
-jumlah_peluru = 50
+jumlah_peluru = 100
 peluru = ExtResource( 5 )
 speed = 10
 
@@ -75,4 +75,8 @@ anims/tembak = SubResource( 2 )
 
 [node name="Analog" parent="CanvasLayer" instance=ExtResource( 6 )]
 position = Vector2( 184.939, 465.771 )
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
