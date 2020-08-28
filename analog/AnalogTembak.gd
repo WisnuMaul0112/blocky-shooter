@@ -18,7 +18,7 @@ var IsTouched = false # Flag if Joystick are touched or not
 var Angle = 0 # The Angle (degre) Bettwen center of the Joystick and button
 var Strength = 0 # Paramater how far button are touched, value(0-1)
 
-var Radius = 200
+var Radius = 120
 var MousePos = Vector2()
 var MobileMode = false
 var TouchPos = Vector2()
@@ -38,18 +38,18 @@ func _process(delta):
 		$Button.position = Vector2(0,0)
 		InIndex = -1
 	else:
-		Angle = -rad2deg(MousePos.angle_to_point(position))
+		Angle = 360-rad2deg(MousePos.angle_to_point(position))
 		if(MobileMode):
-			Angle = -rad2deg(TouchPos.angle_to_point(position))
+			Angle = 360-rad2deg(TouchPos.angle_to_point(position))
 		
 		if global_position.distance_to(MousePos)<Radius and MobileMode==false:
-			$Button.global_position = MousePos
-		elif global_position.distance_to(TouchPos)<Radius and MobileMode==true:
 			$Button.global_position = TouchPos
+		elif global_position.distance_to(TouchPos)<Radius and MobileMode==true:
+			$Button.global_position = MousePos
 		else:
 			
-			var Offside = Vector2(sin(deg2rad(Angle)),cos(deg2rad(Angle)))*Radius
-			$Button.global_position = global_position
+			var Offside = Vector2(sin(deg2rad(Angle)),cos(deg2rad(Angle)))
+			$Button.global_position = global_position + Offside
 			pass
 	Strength = position.distance_to($Button.global_position)/Radius
 	

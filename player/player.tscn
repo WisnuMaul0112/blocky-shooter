@@ -81,6 +81,6 @@ position = Vector2( 184.939, 465.771 )
 position = Vector2( 824, 464 )
 
 [node name="cooldown" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.3
 one_shot = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
