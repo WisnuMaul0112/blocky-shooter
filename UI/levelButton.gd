@@ -11,7 +11,7 @@ onready var level_label = $TextureButton/Label
 onready var button = $TextureButton
 
 func setup():
-	level_label = String(level)
+	level_label.text = str(level)
 	if enable:
 		button.texture_normal = open_texture
 	else:
