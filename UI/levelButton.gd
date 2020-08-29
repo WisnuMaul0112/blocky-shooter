@@ -17,16 +17,13 @@ func setup():
 	else:
 		button.texture_normal = blocked_texture
 	pass
-	
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	setup()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 func _on_TextureButton_pressed():
 	if enable:
-		get_tree().change_scene(level_load)
+		change_scene()
+
+func change_scene():
+	get_tree().change_scene(level_load)

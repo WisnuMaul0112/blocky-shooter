@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://map/map.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menu/popup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=6]
@@ -54,5 +55,12 @@ text = "Bullet: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="popup" parent="CanvasLayer" instance=ExtResource( 3 )]
+margin_left = 8.0
+margin_top = -183.0
+margin_right = 508.0
+margin_bottom = 217.0
+[connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]

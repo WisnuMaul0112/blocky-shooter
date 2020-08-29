@@ -3,10 +3,11 @@ extends KinematicBody2D
 export (int) var jumlah_peluru
 export (PackedScene) var peluru 
 export (int ) var speed 
-export (float) var jeda_tembak = 1.0
+export (float) var jeda_tembak = 1
 
 onready var  cooldown = $cooldown 
 onready var animasi = $AnimationPlayer
+
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
@@ -50,7 +51,7 @@ func _physics_process(delta):
 	gerak = move_and_collide(gerak*speed)
 	#look_at(get_global_mouse_position())
 	
-	if AnalogTembak.IsTouched and tembak and jumlah_peluru != 0 and cooldown.is_stopped():
+	if AnalogTembak.IsTouched and tembak and jumlah_peluru != 0 and cooldown.is_stopped() and AnalogTembak.Strength != 0:
 		cooldown.start(jeda_tembak)
 		animasi.play("tembak")
 		animasi.play("camerashake")
@@ -63,6 +64,7 @@ func shoot():
 	var b = peluru.instance()
 	b.transform = $muzzle.global_transform
 	get_tree().get_root().call_deferred("add_child", b)
+	cooldown.start()
 	#owner.add_child(b)
 
 #func tembak():
