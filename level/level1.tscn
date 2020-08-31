@@ -64,3 +64,5 @@ margin_bottom = 217.0
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
+[connection signal="main_menu" from="CanvasLayer/popup" to="." method="_on_popup_main_menu"]
+[connection signal="next_stage" from="CanvasLayer/popup" to="." method="_on_popup_next_stage"]
