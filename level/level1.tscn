@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://map/map.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://level/level1.gd" type="Script" id=7]
+[ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -15,7 +16,7 @@ font_data = ExtResource( 6 )
 [sub_resource type="Animation" id=2]
 resource_name = "fade"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -53,6 +54,12 @@ position = Vector2( 856, 264 )
 jumlah_peluru = 10
 speed = 3
 
+[node name="enemy2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 376, 280 )
+
+[node name="enemy3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 768, 216 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Heart_Bar" parent="CanvasLayer" instance=ExtResource( 5 )]
@@ -73,12 +80,18 @@ __meta__ = {
 }
 
 [node name="popup" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
 margin_left = 21.0
 margin_top = -183.0
 margin_right = 521.0
 margin_bottom = 217.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+pause_mode = 2
+anims/fade = SubResource( 2 )
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,12 +99,9 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade = SubResource( 2 )
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
-[connection signal="main_menu" from="CanvasLayer/popup" to="." method="_on_popup_main_menu"]
-[connection signal="next_stage" from="CanvasLayer/popup" to="." method="_on_popup_next_stage"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="animasi_fade"]
+[connection signal="main_menu" from="CanvasLayer/popup" to="." method="main_menu"]
+[connection signal="next_stage" from="CanvasLayer/popup" to="." method="next_stage"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animasi_finish"]

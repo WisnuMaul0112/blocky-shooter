@@ -27,7 +27,7 @@ func menang():
 	popup.show()
 	var menang = $CanvasLayer/popup_win/AnimationPlayer
 	menang.play("slidepopup")
-	player.queue_free()
+	get_tree().paused = true
 
 func _on_popup_win_main_menu():
 	menu = true
@@ -42,5 +42,7 @@ func _on_popup_win_next_stage():
 func animasi_finish(anim_name):
 	if menu == true :
 		get_tree().change_scene(main_menu)
+		get_tree().paused = false
 	elif stage == true:
 		get_tree().change_scene(next_stage)
+		get_tree().paused = false

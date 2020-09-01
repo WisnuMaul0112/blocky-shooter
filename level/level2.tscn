@@ -91,7 +91,7 @@ margin_left = -2.0
 margin_right = 498.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -100,6 +100,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+pause_mode = 2
 anims/fade = SubResource( 2 )
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
