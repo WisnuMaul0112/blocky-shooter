@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://map/map.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -8,10 +8,26 @@
 [ext_resource path="res://level/level2.gd" type="Script" id=6]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menu/popup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="level2" type="Node2D"]
 script = ExtResource( 6 )
@@ -37,6 +53,7 @@ position = Vector2( 1184, 64 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -208, 648 )
+speed = 3
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( -192, 80 )
@@ -68,7 +85,27 @@ text = "Bullet: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="popup_win" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_left = -2.0
+margin_right = 498.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+anims/fade = SubResource( 2 )
+[connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
 [connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="main_menu" from="CanvasLayer/popup_win" to="." method="_on_popup_win_main_menu"]
+[connection signal="next_stage" from="CanvasLayer/popup_win" to="." method="_on_popup_win_next_stage"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animasi_finish"]

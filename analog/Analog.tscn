@@ -29,3 +29,6 @@ margin_top = -61.0
 margin_right = 456.0
 margin_bottom = -47.0
 text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}
