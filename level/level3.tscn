@@ -110,10 +110,10 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
