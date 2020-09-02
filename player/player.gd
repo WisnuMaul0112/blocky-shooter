@@ -6,8 +6,10 @@ export (int ) var speed
 export (float) var jeda_tembak = 1
 
 onready var  cooldown = $cooldown 
-onready var animasi = $AnimationPlayer
+onready var animasi = $AnimationPlayer 
 
+
+#var flip = 824
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
@@ -46,7 +48,7 @@ func _physics_process(delta):
 		gerak.x -= 1
 	if Input.is_action_pressed("kanan"):
 		gerak.x += 1
-		
+	
 	gerak = gerak.normalized()
 	gerak = move_and_collide(gerak*speed)
 	#look_at(get_global_mouse_position())
@@ -59,6 +61,7 @@ func _physics_process(delta):
 		emit_signal("nembak")
 		shoot()
 		jumlah_peluru -= 1
+	
 
 func shoot():
 	var b = peluru.instance()

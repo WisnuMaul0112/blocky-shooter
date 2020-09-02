@@ -3,8 +3,19 @@ extends Node2D
 export var jumlah_spawn = 1
 var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
+var main_menu = "res://menu/HomeScreen.tscn"
+var next_stage = "res://player/world.tscn"
+var next_level = false
+var exit = false
+
+onready var black = $CanvasLayer/ColorRect
+onready var animasi = $CanvasLayer/AnimationPlayer
+onready var popup = $CanvasLayer/popup_win
+onready var animasi_popup = $CanvasLayer/popup_win/AnimationPlayer
 
 func _ready():
+	black.hide()
+	popup.hide()
 	b = 3
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 	musuh
@@ -31,3 +42,29 @@ func _on_TambahPeluru_isi_peluru():
 
 func _on_portal_world():
 	pass 
+
+
+func menang():
+	get_tree().paused = true
+	popup.show()
+	animasi_popup.play("slidepopup")
+
+
+func main_menu():
+	exit = true
+	black.show()
+	animasi.play("fade")
+
+func next_stage():
+	next_level = true
+	black.show()
+	animasi.play("fade")
+
+
+func animation_finished(anim_name):
+	if exit == true :
+		get_tree().change_scene(main_menu)
+		get_tree().paused = false
+	elif next_level == true :
+		get_tree().change_scene(next_stage)
+		get_tree().paused = false
