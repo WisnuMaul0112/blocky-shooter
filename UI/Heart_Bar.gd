@@ -2,6 +2,7 @@ extends Control
 
 var current_heart = 3 setget update_bars
 signal kurang
+signal dead
 var mati = false
 
 func _ready():
@@ -23,6 +24,7 @@ func  heart_kurang():
 func _on_player_mati():
 	heart_kurang()
 	if current_heart == 0:
-		get_tree().reload_current_scene()
+		emit_signal("dead")
+		#get_tree().reload_current_scene()
 
 		

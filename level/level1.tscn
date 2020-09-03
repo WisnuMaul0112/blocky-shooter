@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://map/map.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://level/level1.gd" type="Script" id=7]
 [ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menu/popup_dead.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -86,6 +87,10 @@ margin_top = -183.0
 margin_right = 521.0
 margin_bottom = 217.0
 
+[node name="popup_dead" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_left = -2.0
+margin_right = 498.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 pause_mode = 2
 anims/fade = SubResource( 2 )
@@ -102,6 +107,8 @@ __meta__ = {
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
+[connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
 [connection signal="main_menu" from="CanvasLayer/popup" to="." method="main_menu"]
-[connection signal="next_stage" from="CanvasLayer/popup" to="." method="next_stage"]
+[connection signal="main_menu" from="CanvasLayer/popup_dead" to="." method="main_menu"]
+[connection signal="retry" from="CanvasLayer/popup_dead" to="." method="retry"]
 [connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animasi_finish"]
