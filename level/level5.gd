@@ -7,7 +7,9 @@ var main_menu = "res://menu/HomeScreen.tscn"
 var next_stage = "res://player/world.tscn"
 var next_level = false
 var exit = false
-
+var dead = false
+onready var popup_dead = $CanvasLayer/popup_dead
+onready var animasi_popup_dead = $CanvasLayer/popup_dead/AnimationPlayer
 onready var black = $CanvasLayer/ColorRect
 onready var animasi = $CanvasLayer/AnimationPlayer
 onready var popup = $CanvasLayer/popup_win
@@ -68,3 +70,16 @@ func animation_finished(anim_name):
 	elif next_level == true :
 		get_tree().change_scene(next_stage)
 		get_tree().paused = false
+	elif dead == true:
+		get_tree().reload_current_scene()
+		get_tree().paused = false
+
+func dead():
+	popup_dead.show()
+	animasi_popup_dead.play("slidepopup")
+	get_tree().paused = true
+
+func retry():
+	dead = true
+	animasi.play("fade")
+	black.show()

@@ -1,6 +1,6 @@
 extends TextureRect
 
-signal next_stage
+signal retry
 signal main_menu
 
 func _ready():
@@ -9,5 +9,5 @@ func _ready():
 func _on_Button2_pressed():
 	emit_signal("main_menu")
 
-func next_stage():
-	emit_signal("next_stage")
+func retry():
+	emit_signal("retry")

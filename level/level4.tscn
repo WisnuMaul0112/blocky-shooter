@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://level/level4.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://menu/popup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menu/popup_dead.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -90,8 +91,12 @@ __meta__ = {
 }
 
 [node name="popup_win" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
 margin_left = 6.0
 margin_right = 506.0
+
+[node name="popup_dead" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 pause_mode = 2
@@ -117,7 +122,10 @@ autostart = true
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
 [connection signal="main_menu" from="CanvasLayer/popup_win" to="." method="main_menu"]
 [connection signal="next_stage" from="CanvasLayer/popup_win" to="." method="next_stage"]
+[connection signal="main_menu" from="CanvasLayer/popup_dead" to="." method="main_menu"]
+[connection signal="retry" from="CanvasLayer/popup_dead" to="." method="retry"]
 [connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animation_finished"]
 [connection signal="timeout" from="spawn_musuh" to="." method="_on_spawn_musuh_timeout"]

@@ -56,7 +56,6 @@ func dead():
 	animasi_slide_dead.play("slidepopup")
 	get_tree().paused = true
 	
-	
 func retry():
 	dead = true
 	colorreactblack.show()
