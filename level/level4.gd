@@ -6,7 +6,7 @@ var next_level = false
 var dead = false
 var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
-var next_stage = "res://level/level5.tscn"
+var next_stage = "res://menu/level.tscn"
 var home_screen = "res://menu/HomeScreen.tscn"
 onready var popup_dead = $CanvasLayer/popup_dead
 onready var animasi_popup_dead = $CanvasLayer/popup_dead/AnimationPlayer
@@ -57,6 +57,7 @@ func main_menu():
 
 func next_stage():
 	next_level = true
+	LevelUnlock.level5 = true
 	animasi.play("fade")
 	black.show()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/world.gd" type="Script" id=2]
@@ -7,11 +7,27 @@
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://menu/popup_dead.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/TambahPeluru.tscn" type="PackedScene" id=9]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="world" type="Node2D"]
 script = ExtResource( 2 )
@@ -63,6 +79,9 @@ wait_time = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="popup_dead" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+
 [node name="Heart_Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
 margin_left = 33.0
 margin_top = 27.0
@@ -74,18 +93,34 @@ margin_left = 226.0
 margin_top = 17.0
 margin_right = 330.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Bullet: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+anims/fade = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru3" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru3" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru3" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
 [connection signal="timeout" from="spawn_musuh" to="." method="_on_spawn_musuh_timeout"]
+[connection signal="main_menu" from="CanvasLayer/popup_dead" to="." method="main_menu"]
+[connection signal="retry" from="CanvasLayer/popup_dead" to="." method="retry"]
+[connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
 [connection signal="kurang" from="CanvasLayer/Heart_Bar" to="enemy" method="_on_Heart_Bar_kurang"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animation_finished"]

@@ -37,12 +37,13 @@ func main_menu():
 	
 func next_stage():
 	stage = true
+	LevelUnlock.level2 = true
 	colorreactblack.show()
 	animasi_fade.play("fade")
 	
 func animasi_finish(anim_name):
 	if stage == true:
-		get_tree().change_scene(next_stage)
+		get_tree().change_scene("res://menu/level.tscn")
 		get_tree().paused = false
 	elif menu == true:
 		get_tree().change_scene(main_menu)

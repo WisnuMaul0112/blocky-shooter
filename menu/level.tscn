@@ -53,7 +53,6 @@ open_texture = ExtResource( 5 )
 position = Vector2( 820.804, 269.103 )
 level = 3
 level_load = "res://level/level3.tscn"
-enable = true
 blocked_texture = ExtResource( 4 )
 open_texture = ExtResource( 5 )
 

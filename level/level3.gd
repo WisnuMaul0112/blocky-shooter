@@ -4,7 +4,7 @@ export var jumlah_spawn = 1
 var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
 var main_menu = "res://menu/HomeScreen.tscn"
-var next_stage = "res://level/level4.tscn"
+var next_stage = "res://menu/level.tscn"
 var stage = false
 var menu = false
 var dead = false
@@ -55,6 +55,7 @@ func main_menu():
 	
 func next_stage():
 	stage = true
+	LevelUnlock.level4 = true
 	colorreactblack.show()
 	animasifade.play("fade")
 	

@@ -1,7 +1,7 @@
 extends Node2D
 
 var b = Global.bullet
-var next_stage = "res://level/level3.tscn"
+var next_stage = "res://menu/level.tscn"
 var main_menu = "res://menu/HomeScreen.tscn"
 var stage = false
 var menu = false
@@ -40,6 +40,7 @@ func main_menu():
 	animasifade.play("fade")
 
 func next_stage():
+	LevelUnlock.level3 = true
 	stage = true
 	colorreactblack.show()
 	animasifade.play("fade")

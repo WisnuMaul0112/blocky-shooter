@@ -23,7 +23,5 @@ func _ready():
 
 func _on_TextureButton_pressed():
 	if enable:
-		change_scene()
+		get_tree().change_scene(level_load)
 
-func change_scene():
-	get_tree().change_scene(level_load)
