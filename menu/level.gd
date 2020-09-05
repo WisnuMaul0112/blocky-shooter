@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+onready var level1_enable = $levelButton1
+onready var level1_texture = $levelButton1/TextureButton
+
 onready var level2_enable = $levelButton2
 onready var level2_texture = $levelButton2/TextureButton
 
@@ -15,15 +18,23 @@ func _ready():
 	pass
 
 func _process(delta):
+	if Global.level["level 1"] == true and level1_enable.touch == true:
+		level1_enable.enable = true
+		level1_texture.normal = level1_enable.open_texture
+		
 	if Global.level["level 2"] == true :
 		level2_enable.enable = true
-		level2_texture.texture_normal = level2_enable.open_texture
+		level2_texture.normal = level2_enable.open_texture
+		
 	if Global.level["level 3"]== true :
 		level3_enable.enable = true
-		level3_texture.texture_normal = level3_enable.open_texture
+		level3_texture.normal = level3_enable.open_texture
+		
 	if Global.level["level 4"]== true :
 		level4_enable.enable = true
-		level4_texture.texture_normal = level4_enable.open_texture
+		level4_texture.normal = level4_enable.open_texture
+		
 	if Global.level["level 5"]== true :
 		level5_enable.enable = true
-		level5_texture.texture_normal = level5_enable.open_texture
+		level5_texture.normal = level5_enable.open_texture
+

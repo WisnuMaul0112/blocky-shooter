@@ -12,15 +12,9 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 level = 1
 
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_left = -50.0
-margin_top = -43.0
-margin_right = 58.0
-margin_bottom = 62.0
-texture_normal = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureButton" type="TouchScreenButton" parent="."]
+position = Vector2( -50, -50 )
+normal = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="TextureButton"]
 margin_left = 1.0
@@ -33,4 +27,4 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_pressed"]

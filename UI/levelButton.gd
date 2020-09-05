@@ -1,5 +1,6 @@
 extends Node2D
 
+var touch = false
 export (int) var level 
 export (String) var level_load
 export(bool) var enable
@@ -13,15 +14,15 @@ onready var button = $TextureButton
 func setup():
 	level_label.text = str(level)
 	if enable:
-		button.texture_normal = open_texture
+		button.normal = open_texture
+		#button.texture_normal = open_texture
 	else:
-		button.texture_normal = blocked_texture
+		button.normal = blocked_texture
 	pass
 
 func _ready():
 	setup()
 
-func _on_TextureButton_pressed():
-	if enable:
+func _pressed():
+	if enable :
 		get_tree().change_scene(level_load)
-

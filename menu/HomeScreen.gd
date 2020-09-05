@@ -18,7 +18,6 @@ func play():
 	AnimationFade.play("Fade")
 	Fade.show()
 
-
 func play_transision(anim_name):
 	get_tree().change_scene(play)
 

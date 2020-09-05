@@ -62,7 +62,6 @@ func next_stage():
 	black.show()
 	animasi.play("fade")
 
-
 func animation_finished(anim_name):
 	if exit == true :
 		get_tree().change_scene(main_menu)

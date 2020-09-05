@@ -38,7 +38,6 @@ func _on_spawn_musuh_timeout():
 
 func _on_player_nembak():
 	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
-	
 
 func _on_TambahPeluru_isi_peluru():
 	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
@@ -47,7 +46,7 @@ func menang():
 	popup.show()
 	animasi_popup_win.play("slidepopup")
 	get_tree().paused = true
-	Global.level["level 4"]= true
+	Global.level["level 4"] = true
 	Global.save_file()
 	
 func main_menu():
