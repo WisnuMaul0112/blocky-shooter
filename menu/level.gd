@@ -15,19 +15,18 @@ func _ready():
 	pass
 
 func _process(delta):
-	if LevelUnlock.level2 == true :
+	if Global.level["level 2"] == true :
 		level2_enable.enable = true
 		level2_texture.texture_normal = level2_enable.open_texture
-	if LevelUnlock.level3 == true :
+	if Global.level["level 3"]== true :
 		level3_enable.enable = true
 		level3_texture.texture_normal = level3_enable.open_texture
-	if LevelUnlock.level4 == true :
+	if Global.level["level 4"]== true :
 		level4_enable.enable = true
 		level4_texture.texture_normal = level4_enable.open_texture
-	if LevelUnlock.level5 == true :
+	if Global.level["level 5"]== true :
 		level5_enable.enable = true
 		level5_texture.texture_normal = level5_enable.open_texture
-
 
 func level3Button():
 	var buttonlevel3 = $levelButton3

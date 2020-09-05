@@ -40,7 +40,7 @@ func main_menu():
 	animasifade.play("fade")
 
 func next_stage():
-	LevelUnlock.level3 = true
+	Global.level["level 3"] = true
 	stage = true
 	colorreactblack.show()
 	animasifade.play("fade")

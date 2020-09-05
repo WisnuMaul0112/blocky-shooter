@@ -21,3 +21,6 @@ func play():
 
 func play_transision(anim_name):
 	get_tree().change_scene(play)
+
+func exit_pressed():
+	get_tree().quit()

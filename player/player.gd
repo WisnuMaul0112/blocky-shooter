@@ -53,7 +53,7 @@ func _physics_process(delta):
 	gerak = move_and_collide(gerak*speed)
 	#look_at(get_global_mouse_position())
 	
-	if AnalogTembak.IsTouched and tembak and jumlah_peluru != 0 and cooldown.is_stopped() and AnalogTembak.Strength != 0:
+	if AnalogTembak.IsTouched && tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0:
 		cooldown.start(jeda_tembak)
 		animasi.play("tembak")
 		animasi.play("camerashake")

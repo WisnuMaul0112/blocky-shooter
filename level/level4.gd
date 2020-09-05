@@ -57,7 +57,7 @@ func main_menu():
 
 func next_stage():
 	next_level = true
-	LevelUnlock.level5 = true
+	Global.level["level 5"] = true
 	animasi.play("fade")
 	black.show()
 

@@ -59,12 +59,14 @@ open_texture = ExtResource( 5 )
 [node name="levelButton4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 172.804, 461.103 )
 level = 4
+level_load = "res://level/level4.tscn"
 blocked_texture = ExtResource( 4 )
 open_texture = ExtResource( 5 )
 
 [node name="levelButton5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 508.804, 461.103 )
 level = 5
+level_load = "res://level/level5.tscn"
 blocked_texture = ExtResource( 4 )
 open_texture = ExtResource( 5 )
 
