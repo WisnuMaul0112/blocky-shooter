@@ -48,6 +48,8 @@ func menang():
 	popup.show()
 	animasi_popup_win.play("slidepopup")
 	get_tree().paused = true
+	Global.level["level 5"] == true
+	Global.save_file()
 	
 func main_menu():
 	exit = true
@@ -57,7 +59,6 @@ func main_menu():
 
 func next_stage():
 	next_level = true
-	Global.level["level 5"] = true
 	animasi.play("fade")
 	black.show()
 

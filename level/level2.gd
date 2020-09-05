@@ -33,6 +33,8 @@ func menang():
 	popup.show()
 	animasi_popup_win.play("slidepopup")
 	get_tree().paused = true
+	Global.level["level 3"] = true
+	Global.save_file()
 
 func main_menu():
 	menu = true
@@ -40,7 +42,6 @@ func main_menu():
 	animasifade.play("fade")
 
 func next_stage():
-	Global.level["level 3"] = true
 	stage = true
 	colorreactblack.show()
 	animasifade.play("fade")

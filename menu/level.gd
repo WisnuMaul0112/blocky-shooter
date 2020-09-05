@@ -27,24 +27,3 @@ func _process(delta):
 	if Global.level["level 5"]== true :
 		level5_enable.enable = true
 		level5_texture.texture_normal = level5_enable.open_texture
-
-func level3Button():
-	var buttonlevel3 = $levelButton3
-	var texture = $levelButton3/TextureButton
-	buttonlevel3.enable = true
-	if buttonlevel3.enable:
-		texture.texture_normal = buttonlevel3.open_texture
-
-func level4Button():
-	var buttonlevel4 = $levelButton4
-	var texture = $levelButton4/TextureButton
-	buttonlevel4.enable = true
-	if buttonlevel4.enable:
-		texture.texture_normal = buttonlevel4.open_texture
-
-func level5Button():
-	var buttonlevel5 = $levelButton5
-	var texture = $levelButton5/TextureButton
-	buttonlevel5.enable = true
-	if buttonlevel5.enable:
-		texture.texture_normal = buttonlevel5.open_texture
