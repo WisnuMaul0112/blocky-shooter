@@ -1,12 +1,7 @@
 extends Node2D
 
 var bullet 
-var level ={"level 1":true,
-			"level 2":false,
-			"level 3":false,
-			"level 4":false,
-			"level 5":false,
-			}
+var level ={"level 1":true, "level 2":false, "level 3":false, "level 4":false, "level 5":false,} setget set_file
 var save_file = "user://savefile.data"
 
 func _ready():

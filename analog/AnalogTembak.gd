@@ -43,9 +43,9 @@ func _process(delta):
 			Angle = 360-rad2deg(TouchPos.angle_to_point(position))
 		
 		if global_position.distance_to(MousePos)<Radius and MobileMode==false:
-			$Button.global_position = TouchPos
-		elif global_position.distance_to(TouchPos)<Radius and MobileMode==true:
 			$Button.global_position = MousePos
+		elif global_position.distance_to(TouchPos)<Radius and MobileMode==true:
+			$Button.global_position = TouchPos
 		else:
 			
 			var Offside = Vector2(sin(deg2rad(Angle)),cos(deg2rad(Angle)))
