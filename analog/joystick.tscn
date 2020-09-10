@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://analog/Buttonpressed.png" type="Texture" id=1]
+[ext_resource path="res://analog/Radius.png" type="Texture" id=2]
+[ext_resource path="res://analog/Button.png" type="Texture" id=3]
+[ext_resource path="res://analog/joystick_button.gd" type="Script" id=4]
+
+[node name="joystick" type="Sprite"]
+position = Vector2( 523.12, 370.555 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="joystick_button" type="TouchScreenButton" parent="."]
+normal = ExtResource( 3 )
+pressed = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="joystick_button"]
+margin_left = 112.0
+margin_top = -48.0
+margin_right = 152.0
+margin_bottom = -34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

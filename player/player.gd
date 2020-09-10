@@ -7,9 +7,11 @@ export (float) var jeda_tembak = 1
 
 onready var  cooldown = $cooldown 
 onready var animasi = $AnimationPlayer 
+onready var music_walk = $musik/AudioStreamPlayer
 
 
 #var flip = 824
+onready var joystick = $CanvasLayer/joystick/joystick_button
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
@@ -34,11 +36,11 @@ func _physics_process(delta):
 	
 	#analog gerak
 	gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
-	rotation = deg2rad(-Analog.Angle)
+	#rotation = deg2rad(-Analog.Angle)
 	
 	#analog tembak
-	player_tembak = Vector2(cos(-deg2rad(AnalogTembak.Angle-90)),sin(-deg2rad(AnalogTembak.Angle-90)))*AnalogTembak.Strength*0
-	rotation = deg2rad(-AnalogTembak.Angle)
+	player_tembak = Vector2(cos(-deg2rad(AnalogTembak.Angle-90)),sin(-deg2rad(AnalogTembak.Angle-90)))*AnalogTembak.Strength*1
+	rotation = deg2rad(90-AnalogTembak.Angle)
 	
 	if Input.is_action_pressed("atas"):
 		gerak.y -= 1
@@ -49,11 +51,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("kanan"):
 		gerak.x += 1
 	
-	gerak = gerak.normalized()
-	gerak = move_and_collide(gerak*speed)
+	#gerak = gerak.normalized()
+	#gerak = move_and_collide(gerak*speed)
+	move_and_slide(joystick.get_value() * speed)
 	#look_at(get_global_mouse_position())
 	
-	if AnalogTembak.IsTouched && tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0:
+	if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0.0:
 		cooldown.start(jeda_tembak)
 		animasi.play("tembak")
 		animasi.play("camerashake")
@@ -62,7 +65,7 @@ func _physics_process(delta):
 		shoot()
 		jumlah_peluru -= 1
 	
-
+	
 func shoot():
 	var b = peluru.instance()
 	b.transform = $muzzle.global_transform

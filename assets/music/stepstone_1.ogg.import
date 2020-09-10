@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stepstone_1.ogg-6741067f020fbf9c073e54d927b724de.oggstr"
+
+[deps]
+
+source_file="res://assets/music/stepstone_1.ogg"
+dest_files=[ "res://.import/stepstone_1.ogg-6741067f020fbf9c073e54d927b724de.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

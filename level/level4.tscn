@@ -54,7 +54,7 @@ position = Vector2( 1944, 808 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -224, 0 )
-speed = 3
+speed = 150
 
 [node name="enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 541.265, 438.274 )
@@ -118,10 +118,10 @@ autostart = true
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
-[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
 [connection signal="main_menu" from="CanvasLayer/popup_win" to="." method="main_menu"]
 [connection signal="next_stage" from="CanvasLayer/popup_win" to="." method="next_stage"]

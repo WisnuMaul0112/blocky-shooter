@@ -11,6 +11,7 @@ export (Texture) var open_texture
 onready var level_label = $TextureButton/Label
 onready var button = $TextureButton
 
+
 func setup():
 	level_label.text = str(level)
 	if enable:
@@ -22,7 +23,7 @@ func setup():
 
 func _ready():
 	setup()
-
+	
 func _pressed():
 	if enable :
 		get_tree().change_scene(level_load)

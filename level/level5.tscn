@@ -63,7 +63,7 @@ position = Vector2( 2343.35, 606.128 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -660.483, 400.293 )
-speed = 3
+speed = 150
 
 [node name="enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( -667.155, -100.073 )
@@ -118,12 +118,12 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 pause_mode = 2
 anims/fade = SubResource( 2 )
-[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru2" to="." method="_on_TambahPeluru_isi_peluru"]
-[connection signal="isi_peluru" from="TambahPeluru3" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru2" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru3" to="." method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru3" to="player" method="_on_TambahPeluru_isi_peluru"]
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]

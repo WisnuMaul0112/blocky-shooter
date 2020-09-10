@@ -14,6 +14,9 @@ onready var level4_texture = $levelButton4/TextureButton
 
 onready var level5_enable = $levelButton5
 onready var level5_texture = $levelButton5/TextureButton
+
+onready var colorreact_black = $ColorRect
+onready var loading = $TextureProgress
 func _ready():
 	pass
 
