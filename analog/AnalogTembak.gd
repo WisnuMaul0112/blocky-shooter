@@ -55,8 +55,6 @@ func _process(delta):
 	
 	$Label.text=str(" TouchPos"+str(TouchPos)+"\n MousePos"+str(MousePos)+"\n Strength : "+str(Strength)+"\n Angle : "+str(Angle) +"\n IsTouched : "+str(IsTouched))
 
-	
-
 func _input(event):
 	if event is InputEventMouseButton :
 		if event.is_pressed():

@@ -4,7 +4,7 @@ extends TouchScreenButton
 # If you use this script, I would prefer if you gave credit to me and my channel
 
 # Change these based on the size of your button and outer sprite
-var radius = Vector2(32, 32)
+var radius = Vector2(28, 28)
 var boundary = 64
 var Touch = false
 
@@ -42,5 +42,11 @@ func _input(event):
 func get_value():
 	if get_button_pos().length() > threshold:
 		return get_button_pos().normalized()
-	return Vector2(0, 0)
-	
+	return Vector2()
+
+
+func touchscreen_pressed():
+	Music.walk.play()
+
+func touchscreen_released():
+	Music.walk.stop()

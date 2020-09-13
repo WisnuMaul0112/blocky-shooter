@@ -52,7 +52,6 @@ tile_data = PoolIntArray( -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 
 position = Vector2( 856, 264 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-jumlah_peluru = 10
 speed = 150
 
 [node name="enemy2" parent="." instance=ExtResource( 8 )]
@@ -105,6 +104,9 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]

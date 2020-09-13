@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/screen/background.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/PermanentMarker-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,12 +6,13 @@
 [ext_resource path="res://assets/screen/buttonblockl.png" type="Texture" id=4]
 [ext_resource path="res://assets/screen/button.png" type="Texture" id=5]
 [ext_resource path="res://menu/level.gd" type="Script" id=6]
+[ext_resource path="res://assets/light.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 2 )
 
-[node name="level" type="CanvasLayer"]
+[node name="level" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -25,15 +26,19 @@ __meta__ = {
 [node name="label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -80.5
-margin_top = 32.0
-margin_right = 80.5
-margin_bottom = 119.0
+margin_left = 417.0
+margin_top = 16.0
+margin_right = 607.0
+margin_bottom = 103.0
 custom_fonts/font = SubResource( 1 )
-text = "Level"
+text = "stage"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" type="Light2D" parent="label"]
+position = Vector2( 72, 48 )
+texture = ExtResource( 7 )
 
 [node name="levelButton1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 172.804, 269.103 )
@@ -75,3 +80,6 @@ position = Vector2( 820.804, 461.103 )
 level = 6
 blocked_texture = ExtResource( 4 )
 open_texture = ExtResource( 5 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.196078, 0.196078, 0.196078, 0.976471 )

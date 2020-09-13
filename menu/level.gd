@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 onready var level1_enable = $levelButton1
 onready var level1_texture = $levelButton1/TextureButton

@@ -1,7 +1,7 @@
-extends CanvasLayer
+extends Node2D
 
 onready var AnimationFade = $AnimationPlayer
-onready var Fade = $Fade
+onready var Fade = $CanvasLayer/Fade
 
 # contoh
 var level = "res://menu/level.tscn"
@@ -16,6 +16,7 @@ func _ready():
 	pass 
 
 func play():
+	Music.click.play()
 	AnimationFade.play("Fade")
 	Fade.show()
 	play = true
@@ -27,9 +28,11 @@ func play_transision(anim_name):
 		get_tree().change_scene(tutorial_scene)
 
 func exit_pressed():
+	Music.click.play()
 	get_tree().quit()
 
 func tutorial_pressed():
+	Music.click.play()
 	AnimationFade.play("Fade")
 	Fade.show()
 	tutorial = true

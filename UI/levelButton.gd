@@ -26,4 +26,5 @@ func _ready():
 	
 func _pressed():
 	if enable :
+		Music.click.play()
 		get_tree().change_scene(level_load)

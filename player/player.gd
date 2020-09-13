@@ -7,8 +7,6 @@ export (float) var jeda_tembak = 1
 
 onready var  cooldown = $cooldown 
 onready var animasi = $AnimationPlayer 
-onready var music_walk = $musik/AudioStreamPlayer
-
 
 #var flip = 824
 onready var joystick = $CanvasLayer/joystick/joystick_button
@@ -30,6 +28,7 @@ func _physics_process(delta):
 	var player_tembak = Vector2()
 	var Analog = $CanvasLayer/Analog
 	var AnalogTembak = $CanvasLayer/AnalogTembak
+	var muter = $CanvasLayer/joystick/joystick_button
 	
 	#on analog schene weare add formula 90-rad2deg(TouchPos.angle_to_point(position))
 	# then if we are want to give them back to Radian just add this formual Radian = (Angle - 90)*-1
@@ -53,7 +52,7 @@ func _physics_process(delta):
 	
 	#gerak = gerak.normalized()
 	#gerak = move_and_collide(gerak*speed)
-	move_and_slide(joystick.get_value() * speed)
+	gerak = move_and_slide(joystick.get_value() * speed)
 	#look_at(get_global_mouse_position())
 	
 	if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0.0:
@@ -64,6 +63,7 @@ func _physics_process(delta):
 		emit_signal("nembak")
 		shoot()
 		jumlah_peluru -= 1
+		Music.shoot.play()
 	
 	
 func shoot():
