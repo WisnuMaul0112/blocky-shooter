@@ -4,3 +4,4 @@ onready var walk = $walk
 onready var moster_death = $monster_death
 onready var shoot = $shoot
 onready var click = $click
+onready var get_item = $getitem

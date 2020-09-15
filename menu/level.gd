@@ -15,6 +15,9 @@ onready var level4_texture = $levelButton4/TextureButton
 onready var level5_enable = $levelButton5
 onready var level5_texture = $levelButton5/TextureButton
 
+onready var level6_enable = $levelButton6
+onready var level6_texture = $levelButton6/TextureButton
+
 onready var colorreact_black = $ColorRect
 onready var loading = $TextureProgress
 func _ready():
@@ -40,4 +43,8 @@ func _process(delta):
 	if Global.level["level 5"]== true :
 		level5_enable.enable = true
 		level5_texture.normal = level5_enable.open_texture
+	
+	if Global.level["level 6"] == true:
+		level6_enable.enable = true
+		level6_texture.normal = level6_enable.open_texture
 

@@ -78,6 +78,7 @@ open_texture = ExtResource( 5 )
 [node name="levelButton6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 820.804, 461.103 )
 level = 6
+level_load = "res://player/world.tscn"
 blocked_texture = ExtResource( 4 )
 open_texture = ExtResource( 5 )
 

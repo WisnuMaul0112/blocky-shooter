@@ -35,7 +35,7 @@ length = 0.3
 script = ExtResource( 2 )
 jumlah_peluru = 10
 peluru = ExtResource( 5 )
-speed = 100
+speed = 20
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 19.0131, 18.4597, 19.1555, 6.07125, 27.272, 6.07125, 27.1296, -2.61487, 37.6669, -2.47247, 37.8093, -6.60194, 19.2979, -6.45954, 19.4403, -19.1203, -19.2831, -18.9779, -19.1407, 19.0417 )
@@ -79,8 +79,10 @@ anims/tembak = SubResource( 2 )
 visible = false
 
 [node name="AnalogTembak" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
 
 [node name="joystick" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 200, 464 )
 
 [node name="cooldown" type="Timer" parent="."]

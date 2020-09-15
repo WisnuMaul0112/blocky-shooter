@@ -6,6 +6,7 @@ var level ={"level 1":true,
 			"level 3":false,
 			"level 4":false,
 			"level 5":false,
+			"level 6" : false
 			}
 var save_file = "user://savefile.data"
 

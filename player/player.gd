@@ -49,13 +49,12 @@ func _physics_process(delta):
 		gerak.x -= 1
 	if Input.is_action_pressed("kanan"):
 		gerak.x += 1
+	#-----------------------------gameplay desktop
+	gerak = gerak.normalized()
+	gerak = move_and_slide(gerak*speed)
+	look_at(get_global_mouse_position())
 	
-	#gerak = gerak.normalized()
-	#gerak = move_and_collide(gerak*speed)
-	gerak = move_and_slide(joystick.get_value() * speed)
-	#look_at(get_global_mouse_position())
-	
-	if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0.0:
+	if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && Input.is_action_pressed("tembak"):
 		cooldown.start(jeda_tembak)
 		animasi.play("tembak")
 		animasi.play("camerashake")
@@ -64,6 +63,19 @@ func _physics_process(delta):
 		shoot()
 		jumlah_peluru -= 1
 		Music.shoot.play()
+	
+	
+	#------------------------------gameplay mobile
+	#gerak = move_and_slide(joystick.get_value() * speed)
+	#if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0.0:
+	#	cooldown.start(jeda_tembak)
+	#	animasi.play("tembak")
+	#	animasi.play("camerashake")
+	#	Global.bullet = jumlah_peluru - 1
+	#	emit_signal("nembak")
+	#	shoot()
+	#	jumlah_peluru -= 1
+	#	Music.shoot.play()
 	
 	
 func shoot():

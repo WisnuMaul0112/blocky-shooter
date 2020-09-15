@@ -45,12 +45,11 @@ func _on_TambahPeluru_isi_peluru():
 func _on_portal_world():
 	pass 
 
-
 func menang():
 	get_tree().paused = true
+	Global.level["level 6"] = true
 	popup.show()
 	animasi_popup.play("slidepopup")
-
 
 func main_menu():
 	exit = true
