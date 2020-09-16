@@ -20,6 +20,7 @@ onready var level6_texture = $levelButton6/TextureButton
 
 onready var colorreact_black = $ColorRect
 onready var loading = $TextureProgress
+var exit = "res://menu/HomeScreen.tscn"
 func _ready():
 	pass
 
@@ -47,4 +48,8 @@ func _process(delta):
 	if Global.level["level 6"] == true:
 		level6_enable.enable = true
 		level6_texture.normal = level6_enable.open_texture
+
+func _input(event):
+	if event.is_action_pressed("exit"):
+		get_tree().change_scene(exit)
 

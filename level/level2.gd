@@ -1,8 +1,10 @@
 extends Node2D
 
+export var jumlah_spawn = 1
 var b = Global.bullet
 var next_stage = "res://menu/level.tscn"
 var main_menu = "res://menu/HomeScreen.tscn"
+var musuh = preload("res://enemy/enemy.tscn")
 var stage = false
 var menu = false
 var dead = false
@@ -66,3 +68,13 @@ func retry():
 	dead = true
 	colorreactblack.show()
 	animasifade.play("fade")
+
+func spawn():
+	for i in range(jumlah_spawn):
+		var musuh_muncul = musuh.instance()
+		musuh_muncul.position.x = rand_range(1270.141, -198.435)
+		musuh_muncul.position.y = rand_range(120.511, 632.805)
+		add_child(musuh_muncul)
+		
+func SpawnMusuh_timeout():
+	spawn()

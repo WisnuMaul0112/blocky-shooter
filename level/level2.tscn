@@ -53,7 +53,7 @@ tile_data = PoolIntArray( -65544, 0, 0, -65543, 0, 0, -65542, 0, 0, -65541, 0, 0
 position = Vector2( 1184, 64 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -208, 648 )
+position = Vector2( -226.974, 181.243 )
 speed = 120
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
@@ -63,7 +63,7 @@ position = Vector2( 320, 400 )
 position = Vector2( 112, 176 )
 
 [node name="enemy3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 792, 56 )
+position = Vector2( 1019.69, 253.328 )
 
 [node name="TambahPeluru" parent="." instance=ExtResource( 4 )]
 position = Vector2( 521.987, 215.691 )
@@ -113,15 +113,21 @@ pause_mode = 2
 anims/fade = SubResource( 2 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+
+[node name="SpawnMusuh" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
 [connection signal="menang" from="portal" to="." method="menang"]
 [connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
 [connection signal="nembak" from="player" to="." method="_on_player_nembak"]
-[connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]
+[connection signal="isi_peluru" from="TambahPeluru" to="." method="_on_TambahPeluru_isi_peluru"]
 [connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
 [connection signal="main_menu" from="CanvasLayer/popup_win" to="." method="main_menu"]
 [connection signal="next_stage" from="CanvasLayer/popup_win" to="." method="next_stage"]
 [connection signal="main_menu" from="CanvasLayer/popup_dead" to="." method="main_menu"]
 [connection signal="retry" from="CanvasLayer/popup_dead" to="." method="retry"]
 [connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animasi_finish"]
+[connection signal="timeout" from="SpawnMusuh" to="." method="SpawnMusuh_timeout"]

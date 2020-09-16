@@ -62,3 +62,7 @@ func retry():
 	dead = true
 	colorreactblack.show()
 	animasi_fade.play("fade")
+	
+func _input(event):
+	if event.is_action_pressed("exit"):
+		pass
