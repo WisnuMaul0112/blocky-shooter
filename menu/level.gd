@@ -45,7 +45,7 @@ func _process(delta):
 		level5_enable.enable = true
 		level5_texture.normal = level5_enable.open_texture
 	
-	if Global.level["level 6"] == true:
+	if Global.level["level 6"] == true :
 		level6_enable.enable = true
 		level6_texture.normal = level6_enable.open_texture
 

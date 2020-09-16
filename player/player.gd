@@ -7,12 +7,15 @@ export (float) var jeda_tembak = 1
 
 onready var  cooldown = $cooldown 
 onready var animasi = $AnimationPlayer 
+onready var player = $karakter
+onready var pistol = $pistol
 
 #var flip = 824
 onready var joystick = $CanvasLayer/joystick/joystick_button
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
+var musik_walk = false
 signal mati
 signal nembak
 
@@ -22,6 +25,7 @@ func _ready():
 
 func _process(delta):
 	Global.bullet = jumlah_peluru
+	flip()
 	
 func _physics_process(delta):
 	var gerak = Vector2()
@@ -34,21 +38,28 @@ func _physics_process(delta):
 	# then if we are want to give them back to Radian just add this formual Radian = (Angle - 90)*-1
 	
 	#analog gerak
-	gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
+	#gerak = Vector2(cos(-deg2rad(Analog.Angle-90)),sin(-deg2rad(Analog.Angle-90)))*Analog.Strength*speed
 	#rotation = deg2rad(-Analog.Angle)
 	
 	#analog tembak
 	player_tembak = Vector2(cos(-deg2rad(AnalogTembak.Angle-90)),sin(-deg2rad(AnalogTembak.Angle-90)))*AnalogTembak.Strength*1
 	rotation = deg2rad(90-AnalogTembak.Angle)
 	
+	#input pressed
 	if Input.is_action_pressed("atas"):
 		gerak.y -= 1
+		musik_walk = true
 	if Input.is_action_pressed("bawah"):
 		gerak.y += 1
+		musik_walk = true
 	if Input.is_action_pressed("kiri"):
 		gerak.x -= 1
+		musik_walk = true
 	if Input.is_action_pressed("kanan"):
 		gerak.x += 1
+		musik_walk = true
+	
+	
 	#-----------------------------gameplay desktop
 	gerak = gerak.normalized()
 	gerak = move_and_slide(gerak*speed)
@@ -77,7 +88,26 @@ func _physics_process(delta):
 	#	jumlah_peluru -= 1
 	#	Music.shoot.play()
 	
-	
+func _input(event):
+	#input pressed
+	if event.is_action_pressed("atas") :
+		Music.walk.play()
+	if event.is_action_pressed("bawah"):
+		Music.walk.play()
+	if event.is_action_pressed("kiri"):
+		Music.walk.play()
+	if event.is_action_pressed("kanan"):
+		Music.walk.play()
+	#input released
+	if event.is_action_released("atas"):
+		Music.walk.stop()
+	if event.is_action_released("bawah"):
+		Music.walk.stop()
+	if event.is_action_released("kiri"):
+		Music.walk.stop()
+	if event.is_action_released("kanan"):
+		Music.walk.stop()
+		
 func shoot():
 	var b = peluru.instance()
 	b.transform = $muzzle.global_transform
@@ -102,3 +132,13 @@ func _on_Area2D_body_entered(body):
 func _on_TambahPeluru_isi_peluru():
 	jumlah_peluru += 2
 
+func flip():
+	var direction = sign(get_global_mouse_position().x - player.global_position.x)
+	if direction < 0 :
+		player.flip_h = true
+		pistol.flip_v = true
+		print("flip")
+	else:
+		player.flip_h = false
+		pistol.flip_v = false
+		print("not flip")

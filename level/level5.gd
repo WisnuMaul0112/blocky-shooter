@@ -38,7 +38,6 @@ func _on_spawn_musuh_timeout():
 func _on_player_nembak():
 	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
 	
-
 func _on_TambahPeluru_isi_peluru():
 	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
 
