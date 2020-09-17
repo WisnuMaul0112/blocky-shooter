@@ -17,12 +17,14 @@ onready var colorreactblack = $CanvasLayer/ColorRect
 onready var popup = $CanvasLayer/popup_win
 onready var animasi_popup_win = $CanvasLayer/popup_win/AnimationPlayer
 onready var Bullet = $CanvasLayer/Label
+onready var paused = $CanvasLayer/paused
 
 func _ready():
-	b = 3
+	b = 10
 	popup.hide()
 	popup_dead.hide()
 	colorreactblack.hide()
+	paused.hide()
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 
 func _on_player_nembak():
@@ -41,6 +43,7 @@ func menang():
 func main_menu():
 	menu = true
 	colorreactblack.show()
+	paused.hide()
 	animasifade.play("fade")
 
 func next_stage():
@@ -78,3 +81,12 @@ func spawn():
 		
 func SpawnMusuh_timeout():
 	spawn()
+
+func Continue():
+	get_tree().paused = false
+	paused.hide()
+	
+func _input(event):
+	if event.is_action_pressed("exit"):
+		get_tree().paused = true
+		paused.show()

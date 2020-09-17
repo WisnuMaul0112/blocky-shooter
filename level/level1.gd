@@ -6,7 +6,6 @@ var main_menu = "res://menu/HomeScreen.tscn"
 var menu = false
 var stage = false
 var dead = false
-var paused = preload("res://menu/paused_panel.tscn")
 onready var popup_dead = $CanvasLayer/popup_dead
 onready var animasi_slide_dead = $CanvasLayer/popup_dead/AnimationPlayer
 onready var player = $player
@@ -15,7 +14,8 @@ onready var animasi_fade =$CanvasLayer/AnimationPlayer
 onready var animasi_slide_win= $CanvasLayer/popup/AnimationPlayer
 onready var popup = $CanvasLayer/popup
 onready var Bullet = $CanvasLayer/Label
-onready var paused_panel = $CanvasLayer/paused_panel
+onready var paused = $CanvasLayer/paused
+
 
 func _ready():
 	b = 10
@@ -23,7 +23,7 @@ func _ready():
 	popup.hide()
 	popup_dead.hide()
 	colorreactblack.hide()
-	paused_panel.hide()
+	paused.hide()
 
 func _on_player_nembak():
 	Bullet.text = "Bullet: " + str(Global.bullet)
@@ -38,6 +38,7 @@ func menang():
 func main_menu():
 	menu = true
 	colorreactblack.show()
+	paused.hide()
 	animasi_fade.play("fade")
 	
 func next_stage():
@@ -65,15 +66,12 @@ func retry():
 	dead = true
 	colorreactblack.show()
 	animasi_fade.play("fade")
-	
+
+func Continue():
+	get_tree().paused = false
+	paused.hide()
+
 func _input(event):
 	if event.is_action_pressed("exit"):
-		paused_panel.show()
 		get_tree().paused = true
-
-func paused_panel_Continue():
-	get_tree().paused = false
-	paused_panel.hide()
-
-func paused_panel_exit():
-	main_menu()
+		paused.show()

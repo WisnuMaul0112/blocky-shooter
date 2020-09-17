@@ -4,8 +4,8 @@
 [ext_resource path="res://menu/popup_dead.gd" type="Script" id=2]
 
 [node name="popup_dead" instance=ExtResource( 1 )]
-margin_left = 6.0
-margin_right = 506.0
+margin_left = -250.0
+margin_right = 250.0
 script = ExtResource( 2 )
 
 [node name="Label" parent="." index="1"]

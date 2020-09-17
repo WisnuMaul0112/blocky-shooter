@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://menu/popup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menu/paused.gd" type="Script" id=2]
+
+[node name="paused" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Label" parent="." index="1"]
+text = "PAUSED"
+align = 1
+
+[node name="Button" parent="." index="2"]
+text = "CONTINUE"

@@ -14,12 +14,14 @@ onready var animasi = $CanvasLayer/AnimationPlayer
 onready var black = $CanvasLayer/ColorRect
 onready var popup = $CanvasLayer/popup_win
 onready var animasi_popup_win = $CanvasLayer/popup_win/AnimationPlayer
+onready var paused = $CanvasLayer/paused
 
 func _ready():
 	b = 3
 	black.hide()
 	popup.hide()
 	popup_dead.hide()
+	paused.hide()
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 	musuh
 
@@ -55,6 +57,7 @@ func main_menu():
 	exit = true
 	animasi.play("fade")
 	black.show()
+	paused.hide()
 
 
 func next_stage():
@@ -83,3 +86,13 @@ func retry():
 	dead = true
 	animasi.play("fade")
 	black.show()
+
+
+func Continue():
+	get_tree().paused = false
+	paused.hide()
+	
+func _input(event):
+	if event.is_action_pressed("exit"):
+		paused.show()
+		get_tree().paused = true

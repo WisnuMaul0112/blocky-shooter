@@ -1,6 +1,6 @@
 extends TextureRect
 
-signal next_stage
+signal Continue
 signal main_menu
 onready var animasi = $AnimationPlayer
 
@@ -13,4 +13,4 @@ func _on_Button2_pressed():
 
 func next_stage():
 	Music.click.play()
-	emit_signal("next_stage")
+	emit_signal("Continue")

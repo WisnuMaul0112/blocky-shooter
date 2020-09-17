@@ -9,7 +9,7 @@
 [ext_resource path="res://level/level1.gd" type="Script" id=7]
 [ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://menu/popup_dead.tscn" type="PackedScene" id=9]
-[ext_resource path="res://menu/paused_panel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://menu/paused.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -91,7 +91,7 @@ visible = false
 margin_left = -2.0
 margin_right = 498.0
 
-[node name="paused_panel" parent="CanvasLayer" instance=ExtResource( 10 )]
+[node name="paused" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
@@ -111,9 +111,13 @@ __meta__ = {
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 [connection signal="menang" from="portal" to="." method="menang"]
+[connection signal="mati" from="player" to="CanvasLayer/Heart_Bar" method="_on_player_mati"]
+[connection signal="nembak" from="player" to="." method="_on_player_nembak"]
 [connection signal="dead" from="CanvasLayer/Heart_Bar" to="." method="dead"]
+[connection signal="main_menu" from="CanvasLayer/popup" to="." method="main_menu"]
+[connection signal="next_stage" from="CanvasLayer/popup" to="." method="next_stage"]
 [connection signal="main_menu" from="CanvasLayer/popup_dead" to="." method="main_menu"]
 [connection signal="retry" from="CanvasLayer/popup_dead" to="." method="retry"]
-[connection signal="Continue" from="CanvasLayer/paused_panel" to="." method="paused_panel_Continue"]
-[connection signal="exit" from="CanvasLayer/paused_panel" to="." method="paused_panel_exit"]
+[connection signal="Continue" from="CanvasLayer/paused" to="." method="Continue"]
+[connection signal="main_menu" from="CanvasLayer/paused" to="." method="main_menu"]
 [connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="animasi_finish"]

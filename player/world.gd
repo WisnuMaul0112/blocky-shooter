@@ -10,12 +10,14 @@ onready var color_react = $CanvasLayer/ColorRect
 onready var main_menu = "res://menu/HomeScreen.tscn"
 onready var popup_dead = $CanvasLayer/popup_dead
 onready var animasi_popup_dead = $CanvasLayer/popup_dead/AnimationPlayer
+onready var paused = $CanvasLayer/paused
 
 func _ready():
 	b = 3
 	$CanvasLayer/bullet.text = "Bullet: " + str(b)
 	popup_dead.hide()
 	color_react.hide()
+	paused.hide()
 	
 func spawn():
 	for i in range(jumlah_spawn):
@@ -63,3 +65,11 @@ func retry():
 	color_react.show()
 	animasifade.play("fade")
 	
+
+func Continue():
+	paused.hide()
+	get_tree().paused = false
+func _input(event):
+	if event.is_action_pressed("exit"):
+		get_tree().paused = true
+		paused.show()
