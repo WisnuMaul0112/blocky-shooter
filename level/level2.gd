@@ -16,8 +16,9 @@ onready var animasifade = $CanvasLayer/AnimationPlayer
 onready var colorreactblack = $CanvasLayer/ColorRect
 onready var popup = $CanvasLayer/popup_win
 onready var animasi_popup_win = $CanvasLayer/popup_win/AnimationPlayer
-onready var Bullet = $CanvasLayer/Label
+onready var Bullet_label = $CanvasLayer/bullet
 onready var paused = $CanvasLayer/paused
+onready var heart = $CanvasLayer/Heart_Bar
 
 func _ready():
 	b = 10
@@ -25,13 +26,13 @@ func _ready():
 	popup_dead.hide()
 	colorreactblack.hide()
 	paused.hide()
-	$CanvasLayer/bullet.text = "Bullet: " + str(b)
+	Bullet_label.text = "Bullet: " + str(b)
 
 func _on_player_nembak():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
+	Bullet_label.text = "Bullet: " + str(Global.bullet)
 	
 func _on_TambahPeluru_isi_peluru():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
+	Bullet_label.text = "Bullet: " + str(Global.bullet + 2)
 
 func menang():
 	popup.show()
@@ -39,6 +40,8 @@ func menang():
 	get_tree().paused = true
 	Global.level["level 3"] = true
 	Global.save_file()
+	heart.hide()
+	Bullet_label.hide()
 
 func main_menu():
 	menu = true
@@ -66,6 +69,8 @@ func dead():
 	popup_dead.show()
 	animasi_popup_dead.play("slidepopup")
 	get_tree().paused = true
+	heart.hide()
+	Bullet_label.hide()
 
 func retry():
 	dead = true

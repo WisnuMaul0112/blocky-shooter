@@ -23,22 +23,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label" type="Label" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Light2D" type="Light2D" parent="CanvasLayer"]
+position = Vector2( 502.253, 76.8726 )
+texture = ExtResource( 7 )
+
+[node name="label" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 417.0
-margin_top = 16.0
-margin_right = 607.0
-margin_bottom = 103.0
+margin_left = -94.0
+margin_top = 23.0
+margin_right = 96.0
+margin_bottom = 110.0
+grow_horizontal = 2
 custom_fonts/font = SubResource( 1 )
-text = "stage"
+text = "Stage"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Light2D" type="Light2D" parent="label"]
-position = Vector2( 72, 48 )
-texture = ExtResource( 7 )
 
 [node name="levelButton1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 172.804, 269.103 )

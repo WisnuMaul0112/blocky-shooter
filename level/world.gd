@@ -11,10 +11,12 @@ onready var main_menu = "res://menu/HomeScreen.tscn"
 onready var popup_dead = $CanvasLayer/popup_dead
 onready var animasi_popup_dead = $CanvasLayer/popup_dead/AnimationPlayer
 onready var paused = $CanvasLayer/paused
+onready var bullet_label = $CanvasLayer/bullet
+onready var heart = $CanvasLayer/Heart_Bar
 
 func _ready():
-	b = 3
-	$CanvasLayer/bullet.text = "Bullet: " + str(b)
+	b = 10
+	bullet_label.text = "Bullet: " + str(b)
 	popup_dead.hide()
 	color_react.hide()
 	paused.hide()
@@ -31,15 +33,13 @@ func _on_spawn_musuh_timeout():
 	pass
 
 func _on_player_nembak():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
+	bullet_label.text = "Bullet: " + str(Global.bullet)
 	
-
 func _on_TambahPeluru_isi_peluru():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
+	bullet_label.text = "Bullet: " + str(Global.bullet + 2)
 
 func _on_portal_world():
 	pass 
-
 
 func animation_finished(anim_name):
 	if dead == true :
@@ -49,11 +49,12 @@ func animation_finished(anim_name):
 		get_tree().change_scene(main_menu)
 		get_tree().paused = false
 
-
 func dead():
 	popup_dead.show()
 	animasi_popup_dead.play("slidepopup")
 	get_tree().paused = true
+	heart.hide()
+	bullet_label.hide()
 
 func main_menu():
 	exit = true 
@@ -65,11 +66,19 @@ func retry():
 	color_react.show()
 	animasifade.play("fade")
 	
-
 func Continue():
 	paused.hide()
 	get_tree().paused = false
+	
 func _input(event):
 	if event.is_action_pressed("exit"):
 		get_tree().paused = true
 		paused.show()
+
+func portal_menang():
+	get_tree().paused = true
+	$"CanvasLayer/game finish".show()
+	$"CanvasLayer/game finish/AnimationPlayer".play("slidepopup")
+	heart.hide()
+	bullet_label.hide()
+	pass 

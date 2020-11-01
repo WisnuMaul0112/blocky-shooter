@@ -15,14 +15,16 @@ onready var black = $CanvasLayer/ColorRect
 onready var popup = $CanvasLayer/popup_win
 onready var animasi_popup_win = $CanvasLayer/popup_win/AnimationPlayer
 onready var paused = $CanvasLayer/paused
+onready var bullet_label = $CanvasLayer/bullet
+onready var heart = $CanvasLayer/Heart_Bar
 
 func _ready():
-	b = 3
+	b = 10
 	black.hide()
 	popup.hide()
 	popup_dead.hide()
 	paused.hide()
-	$CanvasLayer/bullet.text = "Bullet: " + str(b)
+	bullet_label.text = "Bullet: " + str(b)
 	musuh
 
 func spawn():
@@ -37,11 +39,10 @@ func _on_spawn_musuh_timeout():
 	pass
 
 func _on_player_nembak():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
-	
+	bullet_label.text = "Bullet: " + str(Global.bullet)
 
 func _on_TambahPeluru_isi_peluru():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
+	bullet_label.text = "Bullet: " + str(Global.bullet + 2)
 
 func _on_portal_world():
 	pass 
@@ -52,6 +53,8 @@ func menang():
 	get_tree().paused = true
 	Global.level["level 5"] = true
 	Global.save_file()
+	heart.hide()
+	bullet_label.hide()
 	
 func main_menu():
 	exit = true
@@ -80,7 +83,8 @@ func dead():
 	popup_dead.show()
 	animasi_popup_dead.play("slidepopup")
 	get_tree().paused = true
-
+	heart.hide()
+	bullet_label.hide()
 
 func retry():
 	dead = true

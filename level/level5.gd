@@ -4,7 +4,7 @@ export var jumlah_spawn = 1
 var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
 var main_menu = "res://menu/HomeScreen.tscn"
-var next_stage = "res://player/world.tscn"
+var next_stage = "res://level/world.tscn"
 var next_level = false
 var exit = false
 var dead = false
@@ -15,16 +15,17 @@ onready var animasi = $CanvasLayer/AnimationPlayer
 onready var popup = $CanvasLayer/popup_win
 onready var animasi_popup = $CanvasLayer/popup_win/AnimationPlayer
 onready var paused = $CanvasLayer/paused
+onready var bullet_label = $CanvasLayer/bullet
+onready var heart = $CanvasLayer/Heart_Bar
 
 func _ready():
 	black.hide()
 	popup.hide()
 	paused.hide()
 	b = 3
-	$CanvasLayer/bullet.text = "Bullet: " + str(b)
+	bullet_label.text = "Bullet: " + str(b)
 	musuh
 	randomize()
-	$"way out"
 
 func spawn():
 	for i in range(jumlah_spawn):
@@ -38,19 +39,19 @@ func _on_spawn_musuh_timeout():
 	pass
 
 func _on_player_nembak():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet)
+	bullet_label.text = "Bullet: " + str(Global.bullet)
 	
 func _on_TambahPeluru_isi_peluru():
-	$CanvasLayer/bullet.text = "Bullet: " + str(Global.bullet + 2)
+	bullet_label.text = "Bullet: " + str(Global.bullet + 2)
 
-func _on_portal_world():
-	pass 
 
 func menang():
 	get_tree().paused = true
 	Global.level["level 6"] = true
 	popup.show()
 	animasi_popup.play("slidepopup")
+	heart.hide()
+	bullet_label.hide()
 
 func main_menu():
 	exit = true
@@ -78,6 +79,8 @@ func dead():
 	popup_dead.show()
 	animasi_popup_dead.play("slidepopup")
 	get_tree().paused = true
+	heart.hide()
+	bullet_label.hide()
 
 func retry():
 	dead = true

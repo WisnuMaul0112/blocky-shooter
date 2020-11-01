@@ -15,18 +15,19 @@ onready var joystick = $CanvasLayer/joystick/joystick_button
 var bullet_speed = 800
 var bullet = preload("res://bullet/bullet.tscn")
 var tembak = true
-var musik_walk = false
+var jalan = false
 signal mati
 signal nembak
 
 func _ready():
 	jumlah_peluru
+	jalan = false
 	pass
 
 func _process(delta):
 	Global.bullet = jumlah_peluru
 	flip()
-	
+
 func _physics_process(delta):
 	var gerak = Vector2()
 	var player_tembak = Vector2()
@@ -48,18 +49,14 @@ func _physics_process(delta):
 	#input pressed
 	if Input.is_action_pressed("atas"):
 		gerak.y -= 1
-		musik_walk = true
 	if Input.is_action_pressed("bawah"):
 		gerak.y += 1
-		musik_walk = true
 	if Input.is_action_pressed("kiri"):
 		gerak.x -= 1
-		musik_walk = true
 	if Input.is_action_pressed("kanan"):
 		gerak.x += 1
-		musik_walk = true
 	
-	
+
 	#-----------------------------gameplay desktop
 	gerak = gerak.normalized()
 	gerak = move_and_slide(gerak*speed)
@@ -75,7 +72,6 @@ func _physics_process(delta):
 		jumlah_peluru -= 1
 		Music.shoot.play()
 	
-	
 	#------------------------------gameplay mobile
 	#gerak = move_and_slide(joystick.get_value() * speed)
 	#if tembak && jumlah_peluru != 0 && cooldown.is_stopped() && AnalogTembak.Strength != 0.0:
@@ -87,26 +83,17 @@ func _physics_process(delta):
 	#	shoot()
 	#	jumlah_peluru -= 1
 	#	Music.shoot.play()
-	
+
 func _input(event):
 	#input pressed
-	if event.is_action_pressed("atas") :
-		Music.walk.play()
-	if event.is_action_pressed("bawah"):
-		Music.walk.play()
-	if event.is_action_pressed("kiri"):
-		Music.walk.play()
-	if event.is_action_pressed("kanan"):
-		Music.walk.play()
-	#input released
-	if event.is_action_released("atas"):
-		Music.walk.stop()
-	if event.is_action_released("bawah"):
-		Music.walk.stop()
-	if event.is_action_released("kiri"):
-		Music.walk.stop()
-	if event.is_action_released("kanan"):
-		Music.walk.stop()
+	if event.is_action_pressed("atas") or event.is_action_pressed("bawah") or event.is_action_pressed("kanan") or event.is_action_pressed("kiri") :
+		#jalan = true
+		#Music.walk.play()
+		pass
+	else:
+		#jalan = false
+		#Music.walk.stop()
+		pass
 		
 func shoot():
 	var b = peluru.instance()
@@ -137,8 +124,9 @@ func flip():
 	if direction < 0 :
 		player.flip_h = true
 		pistol.flip_v = true
-		print("flip")
 	else:
 		player.flip_h = false
 		pistol.flip_v = false
-		print("not flip")
+
+func _on_kedip_timeout():
+	animasi.play("kedip")
