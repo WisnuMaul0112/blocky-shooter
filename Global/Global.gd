@@ -7,6 +7,7 @@ var level ={"level 1":true,
 			"level 4":false,
 			"level 5":false,
 			"level 6":false,
+			"game finished": false
 			}
 var save_file = "user://savefile.data"
 

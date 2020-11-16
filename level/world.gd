@@ -77,6 +77,7 @@ func _input(event):
 
 func portal_menang():
 	get_tree().paused = true
+	Global.level["game finished"] = true
 	$"CanvasLayer/game finish".show()
 	$"CanvasLayer/game finish/AnimationPlayer".play("slidepopup")
 	heart.hide()

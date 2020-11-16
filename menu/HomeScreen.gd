@@ -9,8 +9,6 @@ var tutorial_scene = "res://UI/tutorial.tscn"
 var play = false
 var tutorial = false
 
-#
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Fade.hide()
 	pass 

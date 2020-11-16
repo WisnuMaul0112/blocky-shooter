@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/world.gd" type="Script" id=2]
@@ -6,23 +6,17 @@
 [ext_resource path="res://map/map.tres" type="TileSet" id=4]
 [ext_resource path="res://assets/font/GloriaHallelujah-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://UI/Heart_Bar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/font/PermanentMarker-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://menu/popup_dead.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/TambahPeluru.tscn" type="PackedScene" id=9]
 [ext_resource path="res://menu/paused.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://menu/game finish.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/screen/panel.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
-size = 60
-font_data = ExtResource( 7 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -46,17 +40,6 @@ margin_top = -807.0
 margin_right = 3823.0
 margin_bottom = 2634.0
 color = Color( 0.215686, 0.00784314, 0.00784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="endless" type="Label" parent="."]
-margin_left = 488.0
-margin_top = 72.0
-margin_right = 702.0
-margin_bottom = 159.0
-custom_fonts/font = SubResource( 1 )
-text = "endless"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -104,15 +87,7 @@ visible = false
 [node name="paused" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="game finish" parent="CanvasLayer" instance=ExtResource( 12 )]
-pause_mode = 2
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_top = -200.0
-margin_bottom = 200.0
-texture = ExtResource( 13 )
 
 [node name="Heart_Bar" parent="CanvasLayer" instance=ExtResource( 6 )]
 margin_left = 33.0
@@ -125,7 +100,7 @@ margin_left = 226.0
 margin_top = 17.0
 margin_right = 330.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Bullet: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,7 +108,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 pause_mode = 2
-anims/fade = SubResource( 3 )
+anims/fade = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 pause_mode = 2
@@ -146,7 +121,6 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 [connection signal="menang" from="portal" to="." method="portal_menang"]
 [connection signal="isi_peluru" from="TambahPeluru" to="player" method="_on_TambahPeluru_isi_peluru"]

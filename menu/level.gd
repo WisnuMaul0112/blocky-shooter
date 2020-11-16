@@ -17,9 +17,6 @@ onready var level5_texture = $levelButton5/TextureButton
 
 onready var level6_enable = $levelButton6
 onready var level6_texture = $levelButton6/TextureButton
-
-onready var colorreact_black = $ColorRect
-onready var loading = $TextureProgress
 onready var StageTitle = $CanvasLayer/label
 var exit = "res://menu/HomeScreen.tscn"
 func _ready():
@@ -49,9 +46,13 @@ func _process(delta):
 	if Global.level["level 6"] == true :
 		level6_enable.enable = true
 		level6_texture.normal = level6_enable.open_texture
-		StageTitle.text = 'Stage Complete'
-
+	
+	if Global.level["game finished"] == true:
+		StageTitle.text = "Stage Complete"
+		
 func _input(event):
 	if event.is_action_pressed("exit"):
 		get_tree().change_scene(exit)
-
+		
+func _on_backButton_pressed():
+	get_tree().change_scene(exit)

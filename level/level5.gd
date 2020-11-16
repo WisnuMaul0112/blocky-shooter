@@ -1,10 +1,9 @@
 extends Node2D
-
 export var jumlah_spawn = 1
 var musuh = preload("res://enemy/enemy.tscn")
 var b = Global.bullet
 var main_menu = "res://menu/HomeScreen.tscn"
-var next_stage = "res://level/world.tscn"
+var next_stage = "res://menu/level.tscn"
 var next_level = false
 var exit = false
 var dead = false
@@ -47,7 +46,7 @@ func _on_TambahPeluru_isi_peluru():
 
 func menang():
 	get_tree().paused = true
-	Global.level["level 6"] = true
+	Global.level["level 6"] = true 
 	popup.show()
 	animasi_popup.play("slidepopup")
 	heart.hide()
